@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -74,9 +75,19 @@ void readMatrix(int matrix[MAX_SIZE][MAX_SIZE], int n, ifstream &file) {
 }
 
 void printMatrix(const int matrix[MAX_SIZE][MAX_SIZE], int n) {
+    // find the maximum width for alignment
+    int maxWidth = 0;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cout << matrix[i][j] << " ";
+            int width = to_string(matrix[i][j]).length();
+            maxWidth = max(maxWidth, width);
+        }
+    }
+
+    // print the matrix with aligned columns
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << setw(maxWidth + 1) << matrix[i][j];
         }
         cout << endl;
     }
