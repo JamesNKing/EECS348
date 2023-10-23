@@ -7,14 +7,14 @@ using namespace std;
 static const int MAX_SIZE = 100;
 
 // define the function prototypes.
-void readMatrix(int matrix[MAX_SIZE][MAX_SIZE], int &n, ifstream &file);
+void readMatrix(int matrix[MAX_SIZE][MAX_SIZE], int n, ifstream &file);
 void printMatrix(const int matrix[MAX_SIZE][MAX_SIZE], int n);
 void addMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int n);
 void multiplyMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int n);
 void subtractMatrices(const int matrix1[MAX_SIZE][MAX_SIZE], const int matrix2[MAX_SIZE][MAX_SIZE], int result[MAX_SIZE][MAX_SIZE], int n);
 
 int main() {
-    cout << "Your name" << endl;
+    cout << "Jamie King" << endl;
     cout << "Lab #6: Matrix manipulation" << endl << endl;
 
     ifstream file("matrix_input.txt");
@@ -24,6 +24,8 @@ int main() {
     }
 
     int n;  // matrix size
+    file >> n; // read size only once
+
     int matrixA[MAX_SIZE][MAX_SIZE];
     int matrixB[MAX_SIZE][MAX_SIZE];
     int resultMatrix[MAX_SIZE][MAX_SIZE];
@@ -60,12 +62,13 @@ int main() {
 }
 
 // implement the function bodies below the main function.
-
-void readMatrix(int matrix[MAX_SIZE][MAX_SIZE], int &n, ifstream &file) {
-    file >> n;
+void readMatrix(int matrix[MAX_SIZE][MAX_SIZE], int n, ifstream &file) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            file >> matrix[i][j];
+            if (!(file >> matrix[i][j])) {
+                cerr << "Error reading matrix value at [" << i << "][" << j << "]!" << endl;
+                return;
+            }
         }
     }
 }
