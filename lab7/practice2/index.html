@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Color and Border Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="control-panel">
+    <label for="rgb-input">Enter RGB value (e.g., 255,0,0):</label>
+    <input type="text" id="rgb-input" placeholder="e.g., 255,0,0">
+
+    <label for="border-width-input">Enter Border Width (in px):</label>
+    <input type="number" id="border-width-input" placeholder="e.g., 5">
+    
+    <button onclick="updateStyles()">Apply Changes</button>
+</div>
+
+<p id="sample-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut ullamcorper justo, nec facilisis tortor. Aenean eu tortor auctor, ullamcorper augue eu, vehicula est.</p>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
